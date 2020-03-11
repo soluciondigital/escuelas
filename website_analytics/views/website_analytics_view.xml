@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="website_analytics_tree" model="ir.ui.view">
+        <field name="name">website.analytics.tree</field>
+        <field name="model">website.analytics</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="url" />
+                <field name="visitor_count" />
+            </tree>
+        </field>
+    </record>
+    
+    <record id="website_analytics_form" model="ir.ui.view">
+        <field name="name">website.analytics.form</field>
+        <field name="model">website.analytics</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object"
+                            class="oe_stat_button" icon="fa-archive"
+                            ariea-label="Archive">
+                            <field name="active" widget="boolean_button"
+                                option="{&quot;terminology&quot;: &quot;active&quot;}"/>
+                        </button>
+                        <button name="%(action_website_to_visitors)s"
+                            type="action" aria-label="Visitors"
+                            class="oe_stat_button" icon="fa-users">
+                            <field name="visitor_count"/> Visitors
+                        </button>
+                        <button name="%(action_report_visitor)s" type="action"
+                            lass="oe_state_button" icon="fa-area-chart"
+                            aria-label="Statistics">
+                            Statistics
+                        </button>
+                        <button name="%(action_report_page)s" type="action"
+                            class="oe_state_button" icon="fa-bar-chart"
+                            aria-label="Pages">
+                            Pages
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Name"/>
+                        </h1>
+                        <div class="o_row">
+                            <field name="url"
+                                placeholder="https://example.com"/>
+                        </div>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="respect_dnt" />
+                        </group>
+                        <group>
+                            <label for="code_type" />
+                            <div class="o_row">
+                                <field name="code_type" />
+                                <button name="action_code"
+                                    type="object" title="Show code"
+                                    class="btn-xs btn-link mb4 fa fa-code" />
+                            </div>
+                        </group>
+                    </group>
+                    <group groups="base.group_no_one">
+                        <field name="code" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"
+                        widget="mail_followers" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+    
+    <record id="website_analytics_form_connector_code" model="ir.ui.view">
+        <field name="name">website.analytics.connector_code</field>
+        <field name="model">website.analytics</field>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <form>
+                <p>Use this code on your HTML to track your visitors</p>
+                <field name="code" nolabel="1" />
+                <footer>
+                    <button special="cancel" string="OK" class="oe_highlight" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <record id="website_analytics_visitor_tree" model="ir.ui.view">
+        <field name="name">website.analytics.visitor.tree</field>
+        <field name="model">website.analytics.visitor</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="create_date" string="Initial visit" />
+                <field name="visit_date" />
+                <field name="user_id" />
+                <field name="country_id" />
+                <field name="ip_address" groups="base.group_no_one" />
+            </tree>
+        </field>
+    </record>
+    
+    <record id="website_analytics_visitor_form" model="ir.ui.view">
+        <field name="name">website.analytics.visitor.form</field>
+        <field name="model">website.analytics.visitor</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(action_visitor_to_visits)s"
+                            type="action" class="oe_stat_button"
+                            icon="fa-eye">
+                            <field name="visit_count"/> Visits
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="user_id" />
+                        </group>
+                        <group>
+                            <field name="country_id" />
+                            <field name="ip_address"
+                                groups="base.group_no_one" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="website_analytics_page_tree" model="ir.ui.view">
+        <field name="name">website.analytics.page.tree</field>
+        <field name="model">website.analytics.visit.page</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="create_date" string="Date" />
+                <field name="path" />
+                <field name="source" />
+            </tree>
+        </field>
+    </record>
+    
+    <record id="website_analytics_visit_tree" model="ir.ui.view">
+        <field name="name">website.analytics.visit.tree</field>
+        <field name="model">website.analytics.visit</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="create_date" string="Visit date" />
+                <field name="browser_id" />
+                <field name="os_id" />
+                <field name="user_agent" groups="base.group_no_one" />
+            </tree>
+        </field>
+    </record>
+    
+    <record id="website_analytics_visit_form" model="ir.ui.view">
+        <field name="name">website.analytics.visit.form</field>
+        <field name="model">website.analytics.visit</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(action_visit_to_pages)s"
+                            class="oe_stat_button" icon="fa-clone"
+                            type="action">
+                            <field name="page_count"/> Pages
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="create_date" string="Visit date" />
+                        </group>
+                        <group>
+                            <field name="browser_id" />
+                            <field name="os_id" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="user_agent"
+                            groups="base.group_no_one" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="website_analytics_os_tree" model="ir.ui.view">
+        <field name="name">website.analytics.os.tree</field>
+        <field name="model">website.analytics.os</field>
+        <field name="arch" type="xml">
+            <tree create="false">
+                <field name="name" />
+                <field name="version" />
+            </tree>
+        </field>
+    </record>
+    <record id="website_analytics_browser_tree" model="ir.ui.view">
+        <field name="name">website.analytics.browser.tree</field>
+        <field name="model">website.analytics.browser</field>
+        <field name="arch" type="xml">
+            <tree create="false">
+                <field name="name" />
+                <field name="version" />
+            </tree>
+        </field>
+    </record>
+</odoo>

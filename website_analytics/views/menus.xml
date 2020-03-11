@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="menu_analytics" model="ir.ui.menu">
+        <field name="name">Website Analytics</field>
+        <field name="sequence">10</field>
+        <field name="groups_id"
+            eval="[(4, ref('website_analytics.group_analytics_user'))]"/>
+        <field name="web_icon">website_analytics,static/description/icon.png</field>
+    </record>
+
+    <record id="menu_analytics_analytics" model="ir.ui.menu">
+        <field name="name">Analytics</field>
+        <field name="sequence">10</field>
+        <field name="parent_id" ref="menu_analytics"/>
+        <field name="groups_id"
+            eval="[(4, ref('website_analytics.group_analytics_user'))]"/>
+    </record>
+
+    <record id="menu_analytics_website" model="ir.ui.menu">
+        <field name="name">Websites</field>
+        <field name="sequence">10</field>
+        <field name="parent_id" ref="menu_analytics_analytics"/>
+        <field name="groups_id"
+            eval="[(4, ref('website_analytics.group_analytics_user'))]"/>
+        <field name="action" ref="action_analytics_website" />
+    </record>
+
+    <record id="menu_analytics_settings" model="ir.ui.menu">
+        <field name="name">Settings</field>
+        <field name="sequence">99</field>
+        <field name="parent_id" ref="menu_analytics"/>
+        <field name="groups_id"
+            eval="[(4, ref('website_analytics.group_analytics_manager'))]"/>
+    </record>
+
+    <record id="menu_analytics_browser" model="ir.ui.menu">
+        <field name="name">Browsers</field>
+        <field name="sequence">10</field>
+        <field name="parent_id" ref="menu_analytics_settings"/>
+        <field name="groups_id"
+            eval="[(4, ref('website_analytics.group_analytics_manager'))]"/>
+        <field name="action" ref="action_analytics_browser" />
+    </record>
+
+    <record id="menu_analytics_os" model="ir.ui.menu">
+        <field name="name">Operating Systems</field>
+        <field name="sequence">11</field>
+        <field name="parent_id" ref="menu_analytics_settings"/>
+        <field name="groups_id"
+            eval="[(4, ref('website_analytics.group_analytics_manager'))]"/>
+        <field name="action" ref="action_analytics_os" />
+    </record>
+</odoo>

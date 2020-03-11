@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="category_analytics" model="ir.module.category">
+        <field name="name">Website Analytics</field>
+    </record>
+</odoo>

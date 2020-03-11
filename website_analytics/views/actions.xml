@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Views -->
+    <record id="action_analytics_website" model="ir.actions.act_window">
+        <field name="name">Website</field>
+        <field name="res_model">website.analytics</field>
+        <field name="target">current</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="action_website_to_visitors" model="ir.actions.act_window">
+        <field name="name">Visitors</field>
+        <field name="res_model">website.analytics.visitor</field>
+        <field name="target">current</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[("website_id", "=", active_id)]</field>
+    </record>
+    <record id="action_visitor_to_visits" model="ir.actions.act_window">
+        <field name="name">Visits</field>
+        <field name="res_model">website.analytics.visit</field>
+        <field name="target">current</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[("visitor_id", "=", active_id)]</field>
+    </record>
+    <record id="action_visit_to_pages" model="ir.actions.act_window">
+        <field name="name">Pages</field>
+        <field name="res_model">website.analytics.visit.page</field>
+        <field name="target">current</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[("visit_id", "=", active_id)]</field>
+    </record>
+    <record id="action_analytics_browser" model="ir.actions.act_window">
+        <field name="name">Browsers</field>
+        <field name="res_model">website.analytics.browser</field>
+        <field name="target">current</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <record id="action_analytics_os" model="ir.actions.act_window">
+        <field name="name">Operating Systems</field>
+        <field name="res_model">website.analytics.os</field>
+        <field name="target">current</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <!-- Server -->
+    <record id="action_visitor_compute_country" model="ir.actions.server">
+        <field name="name">Compute Country</field>
+        <field name="model_id" ref="model_website_analytics_visitor" />
+        <field name="binding_model_id" ref="model_website_analytics_visitor" />
+        <field name="binding_type">action</field>
+        <field name="state">code</field>
+        <field name="code">records._compute_country()</field>
+    </record>
+    <!-- Reports -->
+    <record id="action_report_visitor" model="ir.actions.act_window">
+        <field name="name">Unique visitors</field>
+        <field name="res_model">report.website.analytics.visitor</field>
+        <field name="target">current</field>
+        <field name="view_mode">graph</field>
+        <field name="context">{"default_website_id": active_id}</field>
+    </record>
+    <record id="action_report_page" model="ir.actions.act_window">
+        <field name="name">Pages</field>
+        <field name="res_model">report.website.analytics.page</field>
+        <field name="target">current</field>
+        <field name="view_mode">graph</field>
+        <field name="context">{"default_website_id": active_id}</field>
+    </record>
+</odoo>

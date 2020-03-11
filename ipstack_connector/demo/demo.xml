@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="api_url" model="ir.config_parameter">
+        <field name="value">http://api.ipstack.com/</field>
+    </record>
+    <record id="api_key" model="ir.config_parameter">
+        <field name="value">a16c8135545e06cd92f141a726e9c7e0</field>
+    </record>
+</odoo>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="report_unique_visitor" model="ir.ui.view">
+        <field name="name">report.unique.visitor</field>
+        <field name="model">report.website.analytics.visitor</field>
+        <field name="arch" type="xml">
+            <graph string="Unique visitors" type="line">
+                <field name="visits" type="measure"/>
+                <field name="visit_date"/>
+            </graph>
+        </field>
+    </record>
+    <record id="report_pages" model="ir.ui.view">
+        <field name="name">report.pages</field>
+        <field name="model">report.website.analytics.page</field>
+        <field name="arch" type="xml">
+            <graph string="Pages" type="bar">
+                <field name="visits" type="measure"/>
+                <field name="page"/>
+            </graph>
+        </field>
+    </record>
+</odoo>

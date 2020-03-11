@@ -1,0 +1,51 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#875A7B;">Fetch data from ipstack services</h2>
+        <div class="oe_span12">
+            <div class="text-center">
+                <span class="fa fa-code fa-6x"/>
+            </div>
+            <p class="oe_mt16">
+            Inherit ipstack.connector module and use the available methods
+            </p>
+            <p class="oe_mt16">
+                <code>
+                    _name = "your.model"<br />
+                    _inherit = ["ipstack.connector"]
+                    <br /><br />
+                    @api.multi<br />
+                    def your_method(self):<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;(...)<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;country = self.map_ip(rec.ip_address)
+                </code>
+            </p>
+        </div>
+        <div class="oe_span12">
+            <div class="text-center">
+                <span class="fa fa-cogs fa-6x"/>
+            </div>
+            <p class="oe_mt16">
+                Set the API URL and key on system general settings
+            </p>
+        </div>
+        <div class="oe_span12">
+            <div class="text-center">
+                <span class="fa fa-question fa-6x"/>
+            </div>
+            <p class="oe_mt16">FAQ</p>
+            <ul class="text-left">
+                <li><strong>Free accounts</strong>: If you use a free account, change the API url to HTTP</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<section class="oe_container oe_separator">
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row">
+        <p class="text-center">ipstack Connector is under BSD-3 License</p>
+    </div>
+</section>

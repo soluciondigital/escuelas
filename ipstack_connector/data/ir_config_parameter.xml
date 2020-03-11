@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<odoo noupdate="1">
+    <record id="api_url" model="ir.config_parameter">
+        <field name="key">ipstack.url</field>
+        <field name="value">https://api.ipstack.com/</field>
+    </record>
+    <record id="api_key" model="ir.config_parameter">
+        <field name="key">ipstack.key</field>
+        <field name="value">Get from https://api.ipstack.com/</field>
+    </record>
+</odoo>

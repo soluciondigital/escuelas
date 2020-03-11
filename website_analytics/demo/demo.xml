@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="demo_website" model="website.analytics">
+        <field name="name">Demo</field>
+        <field name="url">http://127.0.0.1:8069</field>
+        <field name="analytics_token">sbnlbjqCe1EwAfGe</field>
+    </record>
+
+    <record id="demo_visitor" model="website.analytics.visitor">
+        <field name="user_id" ref="base.demo_user0"/>
+        <field name="ip_address">58.47.69.12</field>
+        <field name="website_id" ref="demo_website" />
+        <field name="create_date">2018-08-01</field>
+    </record>
+
+    <record id="demo_visitor2" model="website.analytics.visitor">
+        <field name="user_id" ref="base.user_demo"/>
+        <field name="ip_address">54.20.15.20</field>
+        <field name="website_id" ref="demo_website" />
+        <field name="create_date">2018-08-02</field>
+    </record>
+
+    <record id="demo_visit" model="website.analytics.visit">
+        <field name="visitor_id" ref="demo_visitor"/>
+        <field name="user_agent">Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0</field>
+    </record>
+
+    <record id="demo_visit2" model="website.analytics.visit">
+        <field name="visitor_id" ref="demo_visitor"/>
+        <field name="user_agent">Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36</field>
+    </record>
+
+    <record id="demo_visit3" model="website.analytics.visit">
+        <field name="visitor_id" ref="demo_visitor2"/>
+        <field name="user_agent">Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36</field>
+    </record>
+
+    <record id="demo_page" model="website.analytics.visit.page">
+        <field name="path">http://127.0.0.1/</field>
+        <field name="visit_id" ref="demo_visit" />
+    </record>
+
+    <record id="demo_page2" model="website.analytics.visit.page">
+        <field name="path">http://127.0.0.1/aboutus</field>
+        <field name="source">http://127.0.0.1</field>
+        <field name="visit_id" ref="demo_visit" />
+    </record>
+
+    <record id="demo_page3" model="website.analytics.visit.page">
+        <field name="path">http://127.0.0.1/shop</field>
+        <field name="visit_id" ref="demo_visit2" />
+    </record>
+
+    <record id="demo_page4" model="website.analytics.visit.page">
+        <field name="path">http://127.0.0.1/forum</field>
+        <field name="visit_id" ref="demo_visit3" />
+    </record>
+</odoo>
